@@ -3,12 +3,14 @@
   "main": "expo-router/entry",
   "license": "0BSD",
   "version": "1.0.0",
+  "homepage": "https://Codezillaaaa.github.io/Solver_react_native/",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "build:web": "npx expo export -p web",
+    "build:web": "npx expo export -p web --output-dir docs",
+    "predeploy": "npm run build:web && echo. > docs/.nojekyll",
     "test": "jest --watchAll"
   },
   "jest": {
