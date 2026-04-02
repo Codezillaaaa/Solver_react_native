@@ -206,7 +206,7 @@ export default function TabOneScreen() {
         <View style={styles.toolbar}>
           <View style={styles.selectedSubjectContainer}>
             <View style={styles.subjectItem}>
-              <Text style={styles.subjectText}>📝 Review Your Answers</Text>
+              <Text style={styles.subjectText}>Review Your Answers</Text>
             </View>
           </View>
         </View>
@@ -234,7 +234,7 @@ export default function TabOneScreen() {
                   </Text>
                   <View style={styles.recapSelectedAnswer}>
                     <Text style={{ fontSize: 18, color: selected[qIndex] !== -1 ? "#4CAF50" : "#999", marginRight: 2 }}>
-                      {selected[qIndex] !== -1 ? "✔" : "○"}
+                      {selected[qIndex] !== -1 ? "[X] " : "( ) "}
                     </Text>
                     <Text style={[
                       styles.recapSelectedAnswerText,
@@ -247,7 +247,7 @@ export default function TabOneScreen() {
                   </View>
                 </View>
                 <Text style={{ fontSize: 20, color: "#666", marginLeft: 4 }}>
-                  {expandedQuestion === qIndex ? "▲" : "▼"}
+                  {expandedQuestion === qIndex ? "[^]" : "[v]"}
                 </Text>
               </TouchableOpacity>
 
@@ -264,7 +264,7 @@ export default function TabOneScreen() {
                       onPress={() => handleRecapAnswerChange(qIndex, optIndex)}
                     >
                       <Text style={{ fontSize: 18, color: selected[qIndex] === optIndex ? "#2196f3" : "#666", marginRight: 10 }}>
-                        {selected[qIndex] === optIndex ? "●" : "○"}
+                        {selected[qIndex] === optIndex ? "(*) " : "( ) "}
                       </Text>
                       <Text style={[
                         styles.recapOptionText,
@@ -285,7 +285,7 @@ export default function TabOneScreen() {
               style={styles.backToQuizButton}
               onPress={handleBackToQuiz}
             >
-              <Text style={{ fontSize: 18, color: "#2196f3", marginRight: 4 }}>←</Text>
+              <Text style={{ fontSize: 18, color: "#2196f3", marginRight: 4 }}>{'<-'}</Text>
               <Text style={styles.backToQuizButtonText}>Back to Quiz</Text>
             </TouchableOpacity>
 
@@ -294,7 +294,7 @@ export default function TabOneScreen() {
               onPress={handleFinalSubmit}
             >
               <Text style={styles.finalSubmitButtonText}>Final Submit</Text>
-              <Text style={{ fontSize: 18, color: "#fff", marginLeft: 8 }}>✔</Text>
+              <Text style={{ fontSize: 18, color: "#fff", marginLeft: 8 }}>[V]</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
@@ -302,7 +302,7 @@ export default function TabOneScreen() {
         {/* Score Modal */}
         <Modal isVisible={showScore} onBackdropPress={() => {}} style={styles.bottomModal}>
           <View style={styles.scoreContainer}>
-            <Text style={styles.scoreText}>🎉 Your Score</Text>
+            <Text style={styles.scoreText}>Your Score</Text>
             <Text style={styles.scoreValue}>
               {calcScore()} / {questions.length}
             </Text>
