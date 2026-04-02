@@ -233,11 +233,9 @@ export default function TabOneScreen() {
                     {question.question}
                   </Text>
                   <View style={styles.recapSelectedAnswer}>
-                    <MaterialIcons 
-                      name={selected[qIndex] !== -1 ? "check-circle" : "radio-button-unchecked"} 
-                      size={18} 
-                      color={selected[qIndex] !== -1 ? "#4CAF50" : "#999"} 
-                    />
+                    <Text style={{ fontSize: 18, color: selected[qIndex] !== -1 ? "#4CAF50" : "#999", marginRight: 2 }}>
+                      {selected[qIndex] !== -1 ? "✔" : "○"}
+                    </Text>
                     <Text style={[
                       styles.recapSelectedAnswerText,
                       selected[qIndex] === -1 && styles.recapNoAnswer
@@ -248,11 +246,9 @@ export default function TabOneScreen() {
                     </Text>
                   </View>
                 </View>
-                <MaterialIcons 
-                  name={expandedQuestion === qIndex ? "keyboard-arrow-up" : "keyboard-arrow-down"} 
-                  size={24} 
-                  color="#666" 
-                />
+                <Text style={{ fontSize: 20, color: "#666", marginLeft: 4 }}>
+                  {expandedQuestion === qIndex ? "▲" : "▼"}
+                </Text>
               </TouchableOpacity>
 
               {/* Expanded options */}
@@ -267,11 +263,9 @@ export default function TabOneScreen() {
                       ]}
                       onPress={() => handleRecapAnswerChange(qIndex, optIndex)}
                     >
-                      <MaterialIcons 
-                        name={selected[qIndex] === optIndex ? "radio-button-checked" : "radio-button-unchecked"} 
-                        size={20} 
-                        color={selected[qIndex] === optIndex ? "#2196f3" : "#666"} 
-                      />
+                      <Text style={{ fontSize: 18, color: selected[qIndex] === optIndex ? "#2196f3" : "#666", marginRight: 10 }}>
+                        {selected[qIndex] === optIndex ? "●" : "○"}
+                      </Text>
                       <Text style={[
                         styles.recapOptionText,
                         selected[qIndex] === optIndex && styles.recapOptionTextSelected
@@ -291,7 +285,7 @@ export default function TabOneScreen() {
               style={styles.backToQuizButton}
               onPress={handleBackToQuiz}
             >
-              <MaterialIcons name="arrow-back" size={20} color="#2196f3" />
+              <Text style={{ fontSize: 18, color: "#2196f3", marginRight: 4 }}>←</Text>
               <Text style={styles.backToQuizButtonText}>Back to Quiz</Text>
             </TouchableOpacity>
 
@@ -300,7 +294,7 @@ export default function TabOneScreen() {
               onPress={handleFinalSubmit}
             >
               <Text style={styles.finalSubmitButtonText}>Final Submit</Text>
-              <MaterialIcons name="check" size={20} color="#fff" />
+              <Text style={{ fontSize: 18, color: "#fff", marginLeft: 8 }}>✔</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
