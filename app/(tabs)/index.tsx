@@ -233,7 +233,13 @@ export default function TabOneScreen() {
                     {question.question}
                   </Text>
                   <View style={styles.recapSelectedAnswer}>
-                    {/* Removed status indicator box fix */}
+                    <View style={{
+                      width: 12,
+                      height: 12,
+                      borderRadius: 6,
+                      backgroundColor: selected[qIndex] !== -1 ? "#4CAF50" : "#ccc",
+                      marginRight: 8
+                    }} />
                     <Text style={[
                       styles.recapSelectedAnswerText,
                       selected[qIndex] === -1 && styles.recapNoAnswer
@@ -259,7 +265,26 @@ export default function TabOneScreen() {
                       ]}
                       onPress={() => handleRecapAnswerChange(qIndex, optIndex)}
                     >
-                      {/* Removed selection marker box fix */}
+                      <View style={{
+                        width: 20,
+                        height: 20,
+                        borderRadius: 10,
+                        borderWidth: 2,
+                        borderColor: selected[qIndex] === optIndex ? "#2196f3" : "#ccc",
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        marginRight: 10,
+                        backgroundColor: selected[qIndex] === optIndex ? "#e3f2fd" : "transparent"
+                      }}>
+                        {selected[qIndex] === optIndex && (
+                          <View style={{
+                            width: 10,
+                            height: 10,
+                            borderRadius: 5,
+                            backgroundColor: "#2196f3"
+                          }} />
+                        )}
+                      </View>
                       <Text style={[
                         styles.recapOptionText,
                         selected[qIndex] === optIndex && styles.recapOptionTextSelected
