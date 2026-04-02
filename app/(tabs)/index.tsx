@@ -233,9 +233,7 @@ export default function TabOneScreen() {
                     {question.question}
                   </Text>
                   <View style={styles.recapSelectedAnswer}>
-                    <Text style={{ fontSize: 18, color: selected[qIndex] !== -1 ? "#4CAF50" : "#999", marginRight: 2 }}>
-                      {selected[qIndex] !== -1 ? "[X] " : "( ) "}
-                    </Text>
+                    {/* Removed status indicator box fix */}
                     <Text style={[
                       styles.recapSelectedAnswerText,
                       selected[qIndex] === -1 && styles.recapNoAnswer
@@ -246,9 +244,7 @@ export default function TabOneScreen() {
                     </Text>
                   </View>
                 </View>
-                <Text style={{ fontSize: 20, color: "#666", marginLeft: 4 }}>
-                  {expandedQuestion === qIndex ? "[^]" : "[v]"}
-                </Text>
+                {/* Removed expand/collapse marker box fix */}
               </TouchableOpacity>
 
               {/* Expanded options */}
@@ -263,9 +259,7 @@ export default function TabOneScreen() {
                       ]}
                       onPress={() => handleRecapAnswerChange(qIndex, optIndex)}
                     >
-                      <Text style={{ fontSize: 18, color: selected[qIndex] === optIndex ? "#2196f3" : "#666", marginRight: 10 }}>
-                        {selected[qIndex] === optIndex ? "(*) " : "( ) "}
-                      </Text>
+                      {/* Removed selection marker box fix */}
                       <Text style={[
                         styles.recapOptionText,
                         selected[qIndex] === optIndex && styles.recapOptionTextSelected
@@ -285,7 +279,7 @@ export default function TabOneScreen() {
               style={styles.backToQuizButton}
               onPress={handleBackToQuiz}
             >
-              <Text style={{ fontSize: 18, color: "#2196f3", marginRight: 4 }}>{'<-'}</Text>
+              {/* Removed arrow icon box fix */}
               <Text style={styles.backToQuizButtonText}>Back to Quiz</Text>
             </TouchableOpacity>
 
@@ -294,7 +288,7 @@ export default function TabOneScreen() {
               onPress={handleFinalSubmit}
             >
               <Text style={styles.finalSubmitButtonText}>Final Submit</Text>
-              <Text style={{ fontSize: 18, color: "#fff", marginLeft: 8 }}>[V]</Text>
+              {/* Removed check icon box fix */}
             </TouchableOpacity>
           </View>
         </ScrollView>
@@ -329,7 +323,7 @@ export default function TabOneScreen() {
           <Text style={styles.subjectText}>{selectedCategory?.name || 'Select Subject'}</Text>
           {selectedCategory?.name && (
             <TouchableOpacity onPress={() => setSelectedCategoryId(null)} style={styles.editIcon}>
-              <MaterialIcons name="edit" size={20} color="#2196f3" />
+              {/* Removed edit icon box fix */}
             </TouchableOpacity>
           )}
         </View>
