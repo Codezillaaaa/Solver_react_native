@@ -233,13 +233,7 @@ export default function TabOneScreen() {
                     {question.question}
                   </Text>
                   <View style={styles.recapSelectedAnswer}>
-                    <View style={{
-                      width: 12,
-                      height: 12,
-                      borderRadius: 6,
-                      backgroundColor: selected[qIndex] !== -1 ? "#4CAF50" : "#ccc",
-                      marginRight: 8
-                    }} />
+                    <View style={[styles.statusDot, selected[qIndex] !== -1 && styles.statusDotSuccess]} />
                     <Text style={[
                       styles.recapSelectedAnswerText,
                       selected[qIndex] === -1 && styles.recapNoAnswer
@@ -250,7 +244,10 @@ export default function TabOneScreen() {
                     </Text>
                   </View>
                 </View>
-                {/* Removed expand/collapse marker box fix */}
+                <View style={styles.chevronContainer}>
+                  <View style={[styles.chevronLeft, expandedQuestion === qIndex && styles.chevronLeftUp]} />
+                  <View style={[styles.chevronRight, expandedQuestion === qIndex && styles.chevronRightUp]} />
+                </View>
               </TouchableOpacity>
 
               {/* Expanded options */}
@@ -265,25 +262,8 @@ export default function TabOneScreen() {
                       ]}
                       onPress={() => handleRecapAnswerChange(qIndex, optIndex)}
                     >
-                      <View style={{
-                        width: 20,
-                        height: 20,
-                        borderRadius: 10,
-                        borderWidth: 2,
-                        borderColor: selected[qIndex] === optIndex ? "#2196f3" : "#ccc",
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        marginRight: 10,
-                        backgroundColor: selected[qIndex] === optIndex ? "#e3f2fd" : "transparent"
-                      }}>
-                        {selected[qIndex] === optIndex && (
-                          <View style={{
-                            width: 10,
-                            height: 10,
-                            borderRadius: 5,
-                            backgroundColor: "#2196f3"
-                          }} />
-                        )}
+                      <View style={[styles.radioOuter, selected[qIndex] === optIndex && styles.radioOuterSelected]}>
+                        {selected[qIndex] === optIndex && <View style={styles.radioInner} />}
                       </View>
                       <Text style={[
                         styles.recapOptionText,
@@ -612,12 +592,14 @@ const styles = StyleSheet.create({
   },
   recapSelectedAnswer: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
   recapSelectedAnswerText: {
+    flex: 1,
     fontSize: 14,
     color: '#4CAF50',
-    marginLeft: 6,
+    marginLeft: 0,
+    marginTop: 1,
     fontWeight: '500',
   },
   recapNoAnswer: {
@@ -631,7 +613,7 @@ const styles = StyleSheet.create({
   },
   recapOption: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     padding: 12,
     borderRadius: 8,
     marginBottom: 8,
@@ -651,6 +633,69 @@ const styles = StyleSheet.create({
   recapOptionTextSelected: {
     color: '#2196f3',
     fontWeight: '600',
+  },
+  statusDot: {
+    width: 12,
+    height: 12,
+    borderRadius: 6,
+    backgroundColor: '#ccc',
+    marginRight: 8,
+    marginTop: 4,
+  },
+  statusDotSuccess: {
+    backgroundColor: '#4CAF50',
+  },
+  radioOuter: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: '#ccc',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 10,
+    backgroundColor: 'transparent',
+  },
+  radioOuterSelected: {
+    borderColor: '#2196f3',
+    backgroundColor: '#e3f2fd',
+  },
+  radioInner: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: '#2196f3',
+  },
+  chevronContainer: {
+    width: 24,
+    height: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 8,
+  },
+  chevronLeft: {
+    width: 10,
+    height: 2,
+    backgroundColor: '#999',
+    borderRadius: 1,
+    position: 'absolute',
+    left: 4,
+    transform: [{rotate: '45deg'}],
+  },
+  chevronRight: {
+    width: 10,
+    height: 2,
+    backgroundColor: '#999',
+    borderRadius: 1,
+    position: 'absolute',
+    right: 4,
+    transform: [{rotate: '-45deg'}],
+  },
+  chevronLeftUp: {
+    transform: [{rotate: '-45deg'}],
+  },
+  chevronRightUp: {
+    transform: [{rotate: '45deg'}],
   },
   recapButtonContainer: {
     flexDirection: 'row',
